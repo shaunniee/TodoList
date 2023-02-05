@@ -37,8 +37,8 @@ setTodos(removeArr);
   }
 
   return (
-    <div>
-      <h1>What's the plan for today?</h1>
+    <div className="todo-container">
+      <h1 className="todo-head">What's the plan for today?</h1>
       <TodoForm onSubmit={addTodo}/>
       <Todo todos={todos} completeTodo={completeTodo}
       removeTodo={removeTodo} updateTodo={updateTodo}/>

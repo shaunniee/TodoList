@@ -1,36 +1,34 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 
-const Todo = ({ todos, completeTodo, removeTodo,updateTodo }) => {
-
+const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({
     id: null,
-    value: ""
+    value: "",
   });
 
-
-
-  const submitUpdate=(value)=>{
-    updateTodo(edit.id,value)
+  const submitUpdate = (value) => {
+    updateTodo(edit.id, value);
     setEdit({
-        id:null,
-        value:""
-    })
-  }
+      id: null,
+      value: "",
+    });
+  };
 
-  if(edit.id){
-    return <TodoForm edit={edit} onSubmit={submitUpdate}/>
+  if (edit.id) {
+    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
   }
   return todos.map((todo, index) => (
     <div
       className={todo.isComplete ? "todo-row complete" : "todo-row"}
       key={index}
     >
-      <div key={todo.id} >
+      <div key={todo.id} className="singleTodo">
+
         <span onClick={() => completeTodo(todo.id)}>{todo.text}</span>
+
         <div className="icons">
           <RiCloseCircleLine
             onClick={() => removeTodo(todo.id)}
